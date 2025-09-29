@@ -1,243 +1,127 @@
-import { Fragment, useState, useEffect } from 'react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import {
-  ChevronDownIcon,
-  CursorArrowRaysIcon,
-} from '@heroicons/react/20/solid';
-import { Dialog, Popover, Transition } from '@headlessui/react';
-import { Link } from 'react-router-dom';
-import logo from '../assets/logo.svg';
-import { MenuGroup, menuItems } from '@/lib/utils';
-import { PiUserLight } from 'react-icons/pi';
-import { contextData } from '@/context/AuthContext';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Menu, X } from "lucide-react";
+import type { FC } from "react";
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
+import GTranslateProvider from "./UI/GTranslateProvider";
 
-function MenuList({ items }: { items: MenuGroup[] }) {
-  const handleNavbg = () => {
-    const nav = document.getElementById('navBar');
-    if (nav) {
-      if (window.scrollY >= 500) nav.style.backgroundColor = 'rgb(17 24 39)';
-      else {
-        nav.style.backgroundColor = '';
-      }
-    }
-  };
+const Navbar: FC = () => {
+	const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleNavbg);
-  }, []);
+	return (
+		<nav className="w-full py-4 px-6 md:px-12 bg-blue-700">
+			<div className="max-w-7xl mx-auto flex justify-between items-center">
+				{/* Logo */}
+				<Link to="/">
+					<img src={logo} alt="logo" className="w-24" />
+				</Link>
 
-  return (
-    <div className={`lg:flex lg:items-center gap-3`}>
-      {items.map((listItem, i) => (
-        <Popover className="relative" key={i}>
-          {listItem.items.length > 0 ? (
-            <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-medium leading-6 text-gray-100">
-              <span>{listItem.name}</span>
-              <ChevronDownIcon className="hidden lg:flex h-5 w-5" />
-            </Popover.Button>
-          ) : (
-            <Link
-              to={listItem.href}
-              className="inline-flex items-center gap-x-1 text-sm font-medium leading-6 text-gray-100"
-            >
-              <span>{listItem.name}</span>
-            </Link>
-          )}
+				{/* Desktop Navigation */}
+				<div className="hidden md:flex items-center space-x-8 text-white">
+					<Link to="/" className="text-sm font-medium hover:text-blue-100">
+						Home
+					</Link>
+					<Link to="/about" className="text-sm font-medium hover:text-blue-100">
+						About
+					</Link>
+					<Link to="/projects" className="text-sm font-medium hover:text-blue-100">
+						Projects
+					</Link>
+					<Link to="/reports" className="text-sm font-medium hover:text-blue-100">
+						Annual Report
+					</Link>
+					<Link to="/support" className="text-sm font-medium hover:text-blue-100">
+						Support
+					</Link>
+					<Link to="/retirement" className="text-sm font-medium hover:text-blue-100">
+						Retirement
+					</Link>
+					<Link to="/events" className="text-sm font-medium hover:text-blue-100">
+						Event
+					</Link>
+					<div className="flex items-center space-x-3">
+						<div className="cursor-pointer">
+							<GTranslateProvider />
+						</div>
+						<Link
+							to="/login"
+							className="flex items-center h-10 bg-blue-500 text-white  text-sm font-medium px-4 py-1.5 rounded-xl hover:bg-blue-800  transition-colors text-center"
+						>
+							Sign in
+						</Link>
+						<Link
+							to="/signup"
+							className="flex items-center h-10 bg-white text-black  text-sm font-medium px-4 py-1.5 rounded-xl hover:bg-white/90  transition-colors text-center"
+						>
+							Create an Account
+							<ArrowRight className="w-4 h-4 ml-2" />
+						</Link>
+					</div>
+				</div>
 
-          <Transition
-            as={Fragment}
-            enter="transition ease-out duration-200"
-            enterFrom="opacity-0 translate-y-1"
-            enterTo="opacity-100 translate-y-0"
-            leave="transition ease-in duration-150"
-            leaveFrom="opacity-100 translate-y-0"
-            leaveTo="opacity-0 translate-y-1"
-          >
-            <Popover.Panel className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4">
-              <div className="w-screen max-w-sm flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
-                <div className="p-4">
-                  {listItem.items.map((item, i) => (
-                    <div
-                      key={i}
-                      className="group relative flex items-center gap-x-8 rounded-lg p-3 hover:bg-gray-50"
-                    >
-                      <div className="mt-1 flex h-6 w-6 flex-none items-center justify-center rounded-lg bg-gray-50">
-                        <CursorArrowRaysIcon className="h-3 w-3 text-gray-600 group-hover:text-indigo-600" />
-                      </div>
-                      <div>
-                        <Link
-                          to={item.href}
-                          className="font-medium text-gray-900"
-                        >
-                          {item.name} <span className="absolute inset-0" />
-                        </Link>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Popover.Panel>
-          </Transition>
-        </Popover>
-      ))}
-    </div>
-  );
-}
+				{/* Mobile menu button */}
+				<div className="md:hidden flex items-center gap-5">
+					<div className="cursor-pointer">
+						<GTranslateProvider />
+					</div>
 
-export default function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { user } = contextData();
+					<button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none">
+						{isOpen ? <X size={24} /> : <Menu size={24} />}
+					</button>
+				</div>
+			</div>
 
-  const dashboard = [{ name: 'Dashboard', items: [], href: '/dashboard' }];
+			{/* Mobile Navigation */}
+			{isOpen && (
+				<motion.div
+					initial={{ opacity: 0, y: -20 }}
+					animate={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: -20 }}
+					className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-lg z-50 p-4"
+				>
+					<div className="flex flex-col space-y-4">
+						<Link to="/" className="text-sm font-medium hover:text-blue-500">
+							Home
+						</Link>
+						<Link to="/about" className="text-sm font-medium hover:text-blue-500">
+							About
+						</Link>
+						<Link to="/projects" className="text-sm font-medium hover:text-blue-500">
+							Projects
+						</Link>
+						<Link to="/reports" className="text-sm font-medium hover:text-blue-500">
+							Annual Report
+						</Link>
+						<Link to="/support" className="text-sm font-medium hover:text-blue-500">
+							Support
+						</Link>
+						<Link to="/retirement" className="text-sm font-medium hover:text-blue-500">
+							Retirement
+						</Link>
+						<Link to="/events" className="text-sm font-medium hover:text-blue-500">
+							Event
+						</Link>
 
-  const auth = [
-    { name: 'Login', items: [], href: '/login' },
-    { name: 'Register', items: [], href: '/register' },
-  ];
+						<div className="flex flex-col space-y-2 mt-4">
+							<Link
+								to="/signup"
+								className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-xl hover:bg-blue-600/90 transition-colors text-center"
+							>
+								Create an Account
+							</Link>
+							<Link
+								to="/login"
+								className="bg-white border border-gray-300 text-gray-600 text-sm font-medium px-4 py-2 rounded-xl transition-colors text-center"
+							>
+								Sign in
+							</Link>
+						</div>
+					</div>
+				</motion.div>
+			)}
+		</nav>
+	);
+};
 
-  // useEffect(() => {
-  //   const script = document.createElement('script');
-  //   script.src = 'https://cdn.gtranslate.net/widgets/latest/float.js';
-  //   script.defer = true;
-
-  //   script.onload = () => {
-  //     // @ts-ignore
-  //     window.gtranslateSettings = {
-  //       default_language: 'en',
-  //       wrapper_selector: '.gtranslate_wrapper',
-  //       flag_size: 16,
-  //       flag_style: '2d',
-  //       switcher_horizontal_position: 'inline',
-  //       alt_flags: { en: 'usa' },
-  //     };
-  //   };
-
-  //   document.body.appendChild(script);
-
-  //   return () => {
-  //     document.body.removeChild(script);
-  //   };
-  // }, []);
-
-  useEffect(() => {
-    // Check if the script is already present to avoid adding it multiple times
-    if (!document.getElementById('gtranslateScript')) {
-      // @ts-ignore
-      window.gtranslateSettings = {
-        default_language: 'en',
-        wrapper_selector: '.gtranslate_wrapper',
-        flag_size: 16,
-        flag_style: '2d',
-        switcher_horizontal_position: 'inline',
-        alt_flags: { en: 'usa' },
-      };
-
-      const script = document.createElement('script');
-      script.id = 'gtranslateScript';
-      script.src = 'https://cdn.gtranslate.net/widgets/latest/float.js';
-      script.defer = true;
-      document.body.appendChild(script);
-    }
-  }, []);
-
-  return (
-    <>
-      <header
-        className="fixed w-full top-0 left-0 z-40 backdrop-blur-md"
-        id="navBar"
-      >
-        <nav className="max-ctn flex items-center justify-between p-5">
-          <div className="flex lg:flex-1">
-            <Link to="/" className="-m-1.5 p-1.5">
-              <img className="h-7 w-auto" src={logo} alt="logo" />
-            </Link>
-          </div>
-
-          <div className='w-[130px] h-8 mx-6 relative'>
-            <div className="gtranslate_wrapper absolute"></div>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex lg:hidden">
-            <button
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-              onClick={() => setMobileMenuOpen(true)}
-            >
-              <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="h-6 w-6" />
-            </button>
-          </div>
-
-          {/* Desktop Menu */}
-          <Popover.Group className="hidden lg:flex lg:gap-x-12">
-            <MenuList items={menuItems} />
-          </Popover.Group>
-
-          {user ? (
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-6">
-              <Link
-                to="/dashboard"
-                className="border border-white/20 px-4 py-2 !rounded-lg text-sm font-medium text-gray-100 flex items-center gap-2"
-              >
-                Dashboard{' '}
-                <span className="ml-3">
-                  <PiUserLight />
-                </span>
-              </Link>
-            </div>
-          ) : (
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-6">
-              <Link
-                to="/register"
-                className="border border-white/20 px-4 py-2 !rounded-lg text-sm font-medium text-gray-100 flex items-center gap-2"
-              >
-                Register{' '}
-                <span className="ml-3">
-                  <PiUserLight />
-                </span>
-              </Link>
-
-              <Link
-                to="/login"
-                className="text-sm font-medium leading-6 text-gray-100"
-              >
-                Log in{' '}
-                <span className="ml-3" aria-hidden="true">
-                  &rarr;
-                </span>
-              </Link>
-            </div>
-          )}
-        </nav>
-
-        {/* Mobile Menu Dialog */}
-        <Dialog
-          as="div"
-          className="lg:hidden"
-          open={mobileMenuOpen}
-          onClose={() => setMobileMenuOpen(false)}
-        >
-          <div className="fixed inset-0 z-10"></div>
-          <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-            <div className="flex items-center justify-between">
-              <Link to="/">
-                <img className="h-8 w-auto mb-5" src={logo} alt="logo" />
-              </Link>
-
-              <button
-                className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <span className="sr-only">Close menu</span>
-                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-              </button>
-            </div>
-            <MenuList items={menuItems} />
-            {user && <MenuList items={dashboard} />}
-            {!user && <MenuList items={auth} />}
-          </Dialog.Panel>
-        </Dialog>
-      </header>
-    </>
-  );
-}
+export default Navbar;

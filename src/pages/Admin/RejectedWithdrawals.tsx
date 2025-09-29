@@ -24,7 +24,7 @@ export default function RejectedWithdrawals() {
       const res = await fetch(`${url}/withdrawals`);
       const data = await res.json();
 
-      if (res.ok) setWithdrawals(data.filter((wth:any) => wth.status === "failed"))
+      if (res.ok) setWithdrawals(data.filter((wth:any) => wth.status === "rejected"))
       else throw new Error(data.message);
     } catch (error) {
       console.log(error);
@@ -123,19 +123,13 @@ interface WalletData {
   convertedAmount?: number;
 }
 
-interface TradeData {
-  package?: string;
-  interest?: string;
-}
-
 interface ITransaction {
   _id: string;
   type: string;
   user: User;
-  status: 'pending' | 'success' | 'failed';
+  status: 'pending' | 'approved' | 'rejected';
   amount: number;
   date: string; 
   walletData: WalletData;
-  tradeData: TradeData;
 }
 

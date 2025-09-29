@@ -24,7 +24,7 @@ export default function RejectedDeposits() {
       const res = await fetch(`${url}/deposits`);
       const data = await res.json();
 
-      if (res.ok) setDeposits(data.filter((dep:any) => dep.status === "failed"))
+      if (res.ok) setDeposits(data.filter((dep:any) => dep.status === "rejected"))
       else throw new Error(data.message);
     } catch (error) {
       console.log(error);
@@ -124,18 +124,12 @@ interface WalletData {
   convertedAmount?: number;
 }
 
-interface TradeData {
-  package?: string;
-  interest?: string;
-}
-
 interface ITransaction {
   _id: string;
   type: string;
   user: User;
-  status: 'pending' | 'success' | 'failed';
+  status: 'pending' | 'approved' | 'rejected';
   amount: number;
   date: string; 
   walletData: WalletData;
-  tradeData: TradeData;
 }

@@ -21,7 +21,7 @@ export default function PendingWithdrawals() {
   
   const fetchWithdrawals = async () => {
     try {
-      const res = await fetch(`${url}/withdrawals`);
+      const res = await fetch(`${url}/transactions/withdrawals`);
       const data = await res.json();
 
       if (res.ok) setWithdrawals(data.filter((wth:any) => wth.status === "pending"))
@@ -123,18 +123,12 @@ interface WalletData {
   convertedAmount?: number;
 }
 
-interface TradeData {
-  package?: string;
-  interest?: string;
-}
-
 interface ITransaction {
   _id: string;
   type: string;
   user: User;
-  status: 'pending' | 'success' | 'failed';
+  status: 'pending' | 'approved' | 'rejected';
   amount: number;
   date: string; 
   walletData: WalletData;
-  tradeData: TradeData;
 }

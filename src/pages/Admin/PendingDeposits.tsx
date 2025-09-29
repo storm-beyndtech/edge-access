@@ -21,7 +21,7 @@ export default function PendingDeposits() {
   
   const fetchDeposits = async () => {
     try {
-      const res = await fetch(`${url}/deposits`);
+      const res = await fetch(`${url}/transactions/deposits`);
       const data = await res.json();
 
       if (res.ok) setDeposits(data.filter((dep:any) => dep.status === "pending"))
@@ -124,18 +124,12 @@ interface WalletData {
   convertedAmount?: number;
 }
 
-interface TradeData {
-  package?: string;
-  interest?: string;
-}
-
 interface ITransaction {
   _id: string;
   type: string;
   user: User;
-  status: 'pending' | 'success' | 'failed';
+  status: 'pending' | 'approved' | 'rejected';
   amount: number;
   date: string; 
   walletData: WalletData;
-  tradeData: TradeData;
 }
