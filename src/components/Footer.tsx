@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import type { FC } from "react";
+import logo from "../assets/logo.png";
 
 const Footer: FC = () => {
 	return (
@@ -8,7 +9,10 @@ const Footer: FC = () => {
 				<div className="flex flex-col md:flex-row md:items-start md:justify-between space-y-10 md:space-y-0">
 					{/* Logo and tagline */}
 					<div className="md:max-w-[200px]">
-						<h2 className="text-2xl font-semibold">Edge Access</h2>
+						<Link to="/">
+							<img src={logo} alt="logo" className="w-30 mb-5" />
+						</Link>
+
 						<p className="text-sm mt-2">transforming the future of technology and innovation.</p>
 					</div>
 
