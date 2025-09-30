@@ -26,7 +26,7 @@ export default function TradingEducation() {
 					>
 						<h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Mastering Markets</h3>
 						<p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-6">
-							Profyt-Opt Society is committed to redefining how individuals and enterprises approach asset
+							Edge Access Society is committed to redefining how individuals and enterprises approach asset
 							transformation. Our educational initiatives empower learners with the knowledge and tools to
 							navigate trading, markets, and financial instruments with confidence.
 						</p>

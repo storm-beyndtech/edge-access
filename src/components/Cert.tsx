@@ -9,7 +9,7 @@ const CertificateSection = () => {
 					<h2 className="text-3xl md:text-5xl font-bold text-slate-800 mb-4">Certified & Regulated</h2>
 
 					<p className="text-base sm:leading-8 text-gray-600">
-						We operate under the legally registered entity Profyt-Opt, an Australian proprietary company
+						We operate under the legally registered entity Edge Access, an Australian proprietary company
 						regulated by the Australian Securities & Investments Commission (ASIC). Our registration ensures
 						compliance with Australian financial regulations and provides you with the security and confidence
 						you deserve.

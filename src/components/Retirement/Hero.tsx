@@ -49,7 +49,7 @@ const Hero: FC = () => {
 						transition={{ duration: 0.5, delay: 0.2 }}
 						className="text-white/80 text-lg leading-relaxed mb-8"
 					>
-						Plan your future with confidence. Plan your retirement with Profyt-Opt. Please don't hesitate to
+						Plan your future with confidence. Plan your retirement with Edge Access. Please don't hesitate to
 						reach out to us for any questions or concerns you may have.
 					</motion.p>
 

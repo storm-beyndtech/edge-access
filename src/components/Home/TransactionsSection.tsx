@@ -193,7 +193,7 @@ export default function TransactionsSection() {
 						)}
 					</div>
 					<p className="text-gray-600 text-sm sm:text-base">
-						Real-time transactions on Profyt-Opt
+						Real-time transactions on Edge Access
 					</p>
 				</motion.div>
 

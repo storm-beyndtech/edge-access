@@ -22,7 +22,7 @@ const Overview = () => {
 				<div className="grid gap-12 md:grid-cols-2">
 					<Section icon={Building2} title="Company Overview">
 						<p>
-							Profyt-Opt. LTD. is a private Australian company with a long history in the Pilbara and iron
+							Edge Access. LTD. is a private Australian company with a long history in the Pilbara and iron
 							ore sector, as well as cattle agro-farming. Its mission is to bring Australia's mineral and
 							agricultural products to global markets.
 						</p>

@@ -20,7 +20,7 @@ const Review = ({ quote, author, role, rating }: any) => {
 			<h4 className="font-medium text-gray-700 mb-2 text-sm">{role}</h4>
 			<p className="text-gray-700 text-sm leading-relaxed mb-3">{quote}</p>
 			<div className="flex items-center text-xs text-blue-600">
-				<span>Profyt-Opt Reviews</span>
+				<span>Edge Access Reviews</span>
 			</div>
 		</div>
 	);
@@ -73,7 +73,7 @@ export default function Reviews() {
 			quote:
 				"User-friendly design, diverse portfolios, and excellent educational resources. A well-rounded ecosystem for wealth building.",
 			author: "James Williams",
-			role: "My Profyt-Opt experience",
+			role: "My Edge Access experience",
 			rating: 5,
 		},
 		{

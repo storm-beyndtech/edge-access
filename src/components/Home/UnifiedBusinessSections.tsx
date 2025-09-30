@@ -111,7 +111,7 @@ const sectionsData = [
 		id: "philanthropy",
 		title: "Philanthropy",
 		description:
-			"Profyt-Opt Society showcases its dedication to investing in initiatives that enhance the well-being of individuals and communities nationwide.",
+			"Edge Access Society showcases its dedication to investing in initiatives that enhance the well-being of individuals and communities nationwide.",
 		icon: Heart,
 		image: philanthropyImage,
 		route: "/philanthropy",
