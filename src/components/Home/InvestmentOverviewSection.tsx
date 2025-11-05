@@ -10,6 +10,7 @@ import {
 	ArrowRight,
 	BarChart3,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const sectionsData = [
 	{
@@ -147,10 +148,13 @@ export default function InvestmentOverviewSection() {
 								)}
 
 								{/* CTA Button */}
-								<button className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+								<Link
+									to="/retirement"
+									className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+								>
 									<span className="text-sm">Learn More About Our Approach</span>
 									<ArrowRight className="w-4 h-4 ml-2" strokeWidth={1.5} />
-								</button>
+								</Link>
 							</div>
 
 							{/* Image Section */}

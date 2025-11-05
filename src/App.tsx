@@ -50,6 +50,7 @@ import InvestmentHistory from "./pages/Admin/InvestmentHistory";
 import AdminInvestmentPlans from "./pages/Admin/ManagePlans";
 import Retirement from "./pages/Retirement";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
+import Gold from "./pages/Gold";
 
 function App() {
 	const [assetsLoaded, setAssetsLoaded] = useState(false);
@@ -140,6 +141,14 @@ function App() {
 						}
 					/>
 					<Route
+						path="/gold"
+						element={
+							<PublicLayout>
+								<Gold />
+							</PublicLayout>
+						}
+					/>
+					<Route
 						path="/about"
 						element={
 							<PublicLayout>
@@ -201,6 +210,14 @@ function App() {
 						element={
 							<PublicLayout>
 								<Home />
+							</PublicLayout>
+						}
+					/>
+					<Route
+						path="/gold"
+						element={
+							<PublicLayout>
+								<Gold />
 							</PublicLayout>
 						}
 					/>

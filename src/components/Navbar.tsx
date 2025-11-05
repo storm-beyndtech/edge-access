@@ -19,9 +19,6 @@ const Navbar: FC = () => {
 
 				{/* Desktop Navigation */}
 				<div className="hidden md:flex items-center space-x-8 text-white">
-					<Link to="/" className="text-sm font-medium hover:text-blue-100">
-						Home
-					</Link>
 					<Link to="/about" className="text-sm font-medium hover:text-blue-100">
 						About
 					</Link>
@@ -36,6 +33,9 @@ const Navbar: FC = () => {
 					</Link>
 					<Link to="/retirement" className="text-sm font-medium hover:text-blue-100">
 						Retirement
+					</Link>
+					<Link to="/gold" className="text-sm font-medium hover:text-blue-100">
+						Gold
 					</Link>
 					<Link to="/events" className="text-sm font-medium hover:text-blue-100">
 						Event
@@ -98,6 +98,9 @@ const Navbar: FC = () => {
 						</Link>
 						<Link to="/retirement" className="text-sm font-medium hover:text-blue-500">
 							Retirement
+						</Link>
+						<Link to="/gold" className="text-sm font-medium hover:text-blue-500">
+							Gold
 						</Link>
 						<Link to="/events" className="text-sm font-medium hover:text-blue-500">
 							Event

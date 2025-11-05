@@ -10,6 +10,9 @@ import {
 	Droplets,
 	Fuel,
 	Leaf,
+	Coins,
+	Shield,
+	TrendingUp,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -18,6 +21,7 @@ import agricultureImage from "../../assets/agriculture.jpg";
 import miningImage from "../../assets/mining.jpg";
 import oilGasImage from "../../assets/oil-gas.jpg";
 import philanthropyImage from "../../assets/philanthropy.jpg";
+import goldImage from "../../assets/Gold-1.jpg";
 
 const sectionsData = [
 	{
@@ -27,7 +31,7 @@ const sectionsData = [
 			"Sustainable farming solutions and agricultural innovations to feed the world while protecting our environment for future generations.",
 		icon: Wheat,
 		image: agricultureImage,
-		route: "/agriculture",
+		route: "/projects",
 		color: "blue",
 		features: [
 			{
@@ -56,7 +60,7 @@ const sectionsData = [
 			"Evaluate the global mining sector, monitor the volatile metals market, mitigate risk, and align ESG goals with essential data, analytics, and insights.",
 		icon: HardHat,
 		image: miningImage,
-		route: "/mining",
+		route: "/gold",
 		color: "blue",
 		features: [
 			{
@@ -85,7 +89,7 @@ const sectionsData = [
 			"Leading energy solutions through innovative oil and gas exploration, production, and distribution while transitioning to cleaner energy alternatives.",
 		icon: Fuel,
 		image: oilGasImage,
-		route: "/oil-gas",
+		route: "/projects",
 		color: "blue",
 		features: [
 			{
@@ -108,13 +112,43 @@ const sectionsData = [
 		highlightDesc: "Powering the future with responsible energy solutions",
 	},
 	{
+		id: "gold",
+		title: "Gold Investment Excellence",
+		description:
+			"Strategic gold investment opportunities through partnerships with Africa's leading refining operations, offering 98% pure gold with exceptional quality standards and global market access.",
+		icon: Coins,
+		image: goldImage,
+		route: "/gold",
+		color: "blue",
+		features: [
+			{
+				icon: Shield,
+				title: "98% Pure Gold",
+				description: "Premium purity standards with LBMA certification pursuit for quality assurance.",
+			},
+			{
+				icon: TrendingUp,
+				title: "Market Performance",
+				description: "Strong investment returns through strategic positioning in gold markets.",
+			},
+			{
+				icon: Globe,
+				title: "Global Operations",
+				description:
+					"International reach with operations across Ghana, UK, Austria, Amsterdam, Dubai, and Mauritius.",
+			},
+		],
+		highlight: "Precious Metal Excellence",
+		highlightDesc: "Investing in the future with premium gold opportunities",
+	},
+	{
 		id: "philanthropy",
 		title: "Philanthropy",
 		description:
 			"Edge Access Society showcases its dedication to investing in initiatives that enhance the well-being of individuals and communities nationwide.",
 		icon: Heart,
 		image: philanthropyImage,
-		route: "/philanthropy",
+		route: "/projects",
 		color: "blue",
 		features: [
 			{
