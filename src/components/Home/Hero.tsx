@@ -28,7 +28,7 @@ const Hero: FC = () => {
 
 			{/* Main Content */}
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
-				<div className="flex flex-col items-center text-center">
+				<div className="flex flex-col items-center sm:items-start text-center sm:text-left">
 					<motion.h1
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ const Hero: FC = () => {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6, delay: 0.2 }}
-						className="text-white font-regular sm:text-lg max-w-2xl mb-8"
+						className="text-white font-regular sm:text-lg max-w-2xl mb-8 mx-auto sm:mx-0"
 					>
 						We craft personalized solutions to support your business growth and take you one level closer to
 						your goals.
