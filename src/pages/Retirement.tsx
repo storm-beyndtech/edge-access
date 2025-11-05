@@ -57,9 +57,7 @@ const Retirement: React.FC = () => {
 							transition={{ duration: 0.5, delay: 0.2 }}
 							className="text-white text-lg leading-relaxed mb-8"
 						>
-							Secure your financial future with Edge Access's comprehensive retirement investment strategies
-							designed to preserve and grow wealth through diversified global portfolio management, including 
-							real estate investments in top US and Canadian cities.
+							Secure your financial future with comprehensive retirement solutions and real estate investments.
 						</motion.p>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}

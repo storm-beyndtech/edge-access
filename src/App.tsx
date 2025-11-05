@@ -1,6 +1,7 @@
 /* App.tsx */
 import { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Pages
 import Home from "./pages/Home";
@@ -77,7 +78,9 @@ function App() {
 	if (fetching || !assetsLoaded) return <PageLoader />;
 
 	return (
-		<Routes>
+		<>
+			<ScrollToTop />
+			<Routes>
 			{user ? (
 				<>
 					{user.isAdmin ? (
@@ -282,7 +285,8 @@ function App() {
 				path="*"
 				element={<Navigate to={user ? (user.isAdmin ? "/admin" : "/dashboard") : "/"} replace />}
 			/>
-		</Routes>
+			</Routes>
+		</>
 	);
 }
 

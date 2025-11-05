@@ -52,9 +52,7 @@ const Gold: React.FC = () => {
 							transition={{ duration: 0.5, delay: 0.2 }}
 							className="text-white text-lg leading-relaxed mb-8"
 						>
-							Edge Access partners with leading gold refining operations in the world's most mineral-rich regions, 
-							combining traditional excellence with innovative technologies for unparalleled purity and quality. 
-							Invest in 98% pure gold with our premium investment opportunities across global mining locations.
+							Strategic gold investment opportunities with 98% pure gold and global market access.
 						</motion.p>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
